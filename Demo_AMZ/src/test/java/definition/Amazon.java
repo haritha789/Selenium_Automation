@@ -1,10 +1,10 @@
 package test.java.definition;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import main.java.dataProvider.PropertiesReader;
 import main.java.pageMethods.HomePage;
-import org.testng.Assert;
 
 public class Amazon {
 
@@ -13,13 +13,32 @@ public class Amazon {
     }
 
     @Given("^User Open the Url and navigated to Home page$")
-    public void user_open_the_url_and_navigate_to_home_page(){
+    public void userOpenTheUrlAndNavigateToHomePage(){
         HomePage.launchApplication(PropertiesReader.getApplicationUrl());
     }
 
-    @When("Navigate to Hamburger menu & Choose {string} under {string} section")
-    public void navigateToHamburgerMenuChooseUnderSection(String subsection, String section) {
+    @When("Navigate to Hamburger menu and Choose category as {string} and subcategory as {string}")
+    public void navigateToHamburgerMenuAndChooseCategoryAsAndSubcategoryAs(String category,String subcategory) {
         HomePage.clickOnHamburger(PropertiesReader.getElements("hamburger"));
-        HomePage.selectCategory(PropertiesReader.getElements("tvAndAppliancesSection"));
+        HomePage.selectOnCategoryMenuLink(PropertiesReader.getElements("menuCategoryLink"),category);
+        HomePage.selectOnCategoryMenuLink(PropertiesReader.getElements("menuSubcategoryLink"),subcategory);
+    }
+
+    @And("Click on {string} under {string} subsection")
+    public void clickOnUnderSubsection(String finalChoice, String subsection) {
+        HomePage.selectOnCategoryMenuLink(PropertiesReader.getElements("menuSubSectionLink"),subsection);
+        HomePage.selectOnCategoryMenuLink(PropertiesReader.getElements("menuFinalSectionLink"),finalChoice);
+    }
+
+    @And("Scroll down and select the brand as {string}")
+    public void scrollDownAndSelectTheBrandAs(String brandFilter) {
+        //HomePage.selectTheBrandFilter();
+        HomePage.tryOut();
+
+    }
+
+    @And("Apply the sorting filter for price as {string}")
+    public void applyTheSortingFilterForPriceAs(String sortFilter) {
+        HomePage.selectBrandFilter();
     }
 }
