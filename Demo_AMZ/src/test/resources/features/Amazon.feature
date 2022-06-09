@@ -3,4 +3,7 @@ Feature: Amazon
 
   Scenario: Verify the Homepage component API with a PageId, appId and Fields
     Given User Open the Url and navigated to Home page
-    When Navigate to Hamburger menu & Choose "TV, Appliances and Electronics" under "Shop by Department" section
+    When Navigate to Hamburger menu and Choose category as "shop by department" and subcategory as "TV, Appliances, Electronics"
+    And  Click on "Televisions" under "tv, audio & cameras" subsection
+    And  Scroll down and select the brand as "Samsung"
+    And  Apply the sorting filter for price as "High to Low"
