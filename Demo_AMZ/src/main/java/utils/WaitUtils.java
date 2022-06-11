@@ -8,13 +8,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitUtils {
 
-    public static WebElement explicitWaitForElement(WebDriver driver, String locator){
-        WebDriverWait wait = new WebDriverWait(driver,60);
-        WebElement element= wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#a-autoid-0-announce")));
+    /**
+     * Explicitly wait for the element to be visible
+     *
+     * @param driver
+     * @param locator
+     * @return
+     */
+
+    public static WebElement explicitWaitForElement(WebDriver driver, String locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#a-autoid-0-announce")));
         return element;
     }
 
-    public static void waitForUiLoading(){
+    /**
+     * Waits for the UI to complete the loading
+     */
+    public static void waitForUiLoading() {
         long uiWaitStart = System.currentTimeMillis();
         long uiEndWait = uiWaitStart + 400;
         while (uiWaitStart < uiEndWait) {
