@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import main.java.dataProvider.PropertiesReader;
 import main.java.pageMethods.HomePage;
+import main.java.utils.CommonMethods;
 
 public class Amazon {
 
@@ -32,13 +33,16 @@ public class Amazon {
 
     @And("Scroll down and select the brand as {string}")
     public void scrollDownAndSelectTheBrandAs(String brandFilter) {
-        //HomePage.selectTheBrandFilter();
-        HomePage.tryOut();
+        HomePage.selectBrandFilter();
 
     }
 
     @And("Apply the sorting filter for price as {string}")
     public void applyTheSortingFilterForPriceAs(String sortFilter) {
-        HomePage.selectBrandFilter();
+        HomePage.selectSortingFilter();
+        HomePage.findSecondLargestPricedProduct();
+         HomePage.validateThePageNavigationToPDP();
+        HomePage.NavigateProductInformation();
+        HomePage.getTheProductInformation();
     }
 }
