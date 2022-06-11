@@ -14,8 +14,8 @@
         <aspectj.version>1.9.2</aspectj.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-
-
+        <browser>${browser}</browser>
+        <cucumber.options>${cucumber.options}</cucumber.options>
     </properties>
 
     <dependencies>
@@ -133,6 +133,12 @@
             <artifactId>selenium-support</artifactId>
             <version>3.14.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 
@@ -166,7 +172,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.2</version>
         <configuration>
-            <!--                    <systemPropertyVariables>-->
+            <!--                       <systemPropertyVariables>-->
             <!--                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>-->
             <!--                    </systemPropertyVariables>-->
             <argLine>
@@ -195,7 +201,7 @@
                     <goal>generate</goal>
                 </goals>
                 <configuration>
-                    <projectName>MAF_Automation_BDD</projectName>
+                    <projectName>Automation_BDD</projectName>
                     <outputDirectory>${project.build.directory}/cucumber-maven-report</outputDirectory>
                     <cucumberOutput>target/cucumber-parallel/</cucumberOutput>
 
@@ -218,11 +224,13 @@
                 </goals>
             </execution>
         </executions>
+
         <configuration>
             <sourceJsonReportDirectory>target/cucumber-parallel/</sourceJsonReportDirectory>
             <generatedHtmlReportDirectory>${project.build.directory}/trivago-clucumber-report/
             </generatedHtmlReportDirectory>
             <expandStepHooks>true</expandStepHooks>
+
         </configuration>
     </plugin>
 

@@ -6,32 +6,47 @@ import org.openqa.selenium.WebElement;
 
 public class JavaScriptUtils {
 
-
-    public static WebElement scrollToPixelViewforElement(WebDriver driver, String locator, String locatorType){
-    JavascriptExecutor jse = (JavascriptExecutor)driver;
-    WebElement element = null;
-       try {
-        element = validateTheLocatorPath(driver,locator,locatorType);
-    }catch (Exception e){
-
-        jse.executeScript("scroll(0, 1000);");
-    }
-        while(element==null) {
+    /**
+     * To scroll the page to element based on the provided pixel
+     *
+     * @param driver
+     * @param locator
+     * @param locatorType
+     * @return
+     */
+    public static WebElement scrollTheViewForElement(WebDriver driver, String locator, String locatorType) {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        WebElement element = null;
         try {
-            element = validateTheLocatorPath(driver,locator,locatorType);
-        }catch (Exception e){
+            element = getElementBasedOnLocatorType(driver, locator, locatorType);
+        } catch (Exception e) {
+
+            jse.executeScript("scroll(0, 1000);");
         }
-        jse.executeScript("scroll(0, 250);");
-    }
+        while (element == null) {
+            try {
+                element = getElementBasedOnLocatorType(driver, locator, locatorType);
+            } catch (Exception e) {
+            }
+            jse.executeScript("scroll(0, 250);");
+        }
         return element;
     }
 
-    private static WebElement validateTheLocatorPath(WebDriver driver, String locator, String locatorType){
+    /**
+     * Get the element details based on the locator Type
+     *
+     * @param driver
+     * @param locator
+     * @param locatorType
+     * @return
+     */
+    private static WebElement getElementBasedOnLocatorType(WebDriver driver, String locator, String locatorType) {
         WebElement element = null;
-        if(locatorType.equalsIgnoreCase("CSS")){
-           element=FindElements.findByCss(driver,locator);
-           return element;
-        }else if(locatorType.equalsIgnoreCase("XPATH")) {
+        if (locatorType.equalsIgnoreCase("CSS")) {
+            element = FindElements.findByCss(driver, locator);
+            return element;
+        } else if (locatorType.equalsIgnoreCase("XPATH")) {
             element = FindElements.findElementByXpath(driver, locator);
             return element;
         }

@@ -11,10 +11,10 @@
     <protocol>https</protocol>
     
     <!-- title of the document -->
-    <documentTitle>MAF-Rest-Assured-Core</documentTitle>
+    <documentTitle>EXTENT-AUTOMATION-REPORT</documentTitle>
     
     <!-- report name - displayed at top-nav -->
-    <reportName>MAF Rest Assured Report</reportName>
+    <reportName>AUTOMATION-REPORT</reportName>
     
     <!-- global date format override -->  <!-- defaults to yyyy-MM-dd -->
     <dateFormat>yyyy-MM-dd</dateFormat>
