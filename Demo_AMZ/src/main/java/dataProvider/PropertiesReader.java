@@ -1,24 +1,24 @@
 package main.java.dataProvider;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesReader {
 
     private static Properties properties;
-    private static final String propertyFilePath=  "";
-    public static Properties testData = null;
-    public static Properties elements = null;
 
-    public static void getProperties(){
+    /**
+     * Used to Load all the properties
+     */
+    public static void getProperties() {
         try {
-             properties = new Properties();
-             testData = new Properties();
-            elements= new Properties();
+            properties = new Properties();
             try {
-                InputStream configFile = new FileInputStream("configs/Configuration.properties");
+                InputStream configFile = new FileInputStream("src/main/resources/configs/Configuration.properties");
                 InputStream data = new FileInputStream("src/main/resources/elements.properties");
-                elements.load(data);
+                properties.load(data);
                 properties.load(configFile);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -28,25 +28,36 @@ public class PropertiesReader {
         }
     }
 
-    public static String getDriverPath(){
-        String driverPath = properties.getProperty("driverPath");
-        if(driverPath!= null) return driverPath;
-        else throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
-    }
-
+    /**
+     * Return the configured value for implicit wait
+     *
+     * @return
+     */
     public static long getImplicitlyWait() {
         String implicitlyWait = properties.getProperty("implicitlyWait");
-        if(implicitlyWait != null) return Long.parseLong(implicitlyWait);
+        if (implicitlyWait != null) return Long.parseLong(implicitlyWait);
         else throw new RuntimeException("implicitlyWait not specified in the Configuration.properties file.");
     }
 
+    /**
+     * Return the configured application url
+     *
+     * @return
+     */
+
     public static String getApplicationUrl() {
-        String url = properties.getProperty("app_url");
-        if(url != null) return url;
+        String url = properties.getProperty("url");
+        if (url != null) return url;
         else throw new RuntimeException("url not specified in the Configuration.properties file.");
     }
 
-    public static String getElements(String key) {
-        return elements.getProperty(key);
+    /**
+     * Used to return the properties of the element
+     *
+     * @param key
+     * @return
+     */
+    public static String getProperties(String key) {
+        return properties.getProperty(key);
     }
 }

@@ -1,32 +1,45 @@
 package main.java.pageMethods;
 
+import main.java.dataProvider.PropertiesReader;
+import main.java.utils.CommonMethods;
 import main.java.utils.FindElements;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.safari.SafariDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class    HomePage {
+public class HomePage extends TestBase {
 
-    private static WebDriver driver;
-
-
-    public static void launchApplication(String url){
-        driver = new SafariDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-        driver.get("https://www.amazon.in/");
+    /**
+     * Used to Launch the Application URL in Browser
+     */
+    public void launchApplication() {
+        driver.manage().timeouts().implicitlyWait(PropertiesReader.getImplicitlyWait(), TimeUnit.SECONDS);
+        driver.get(PropertiesReader.getApplicationUrl());
     }
 
-    public static void clickOnHamburger(String locator){
-        WebElement element = FindElements.findByCss(driver,locator);
+    /**
+     * Clicks on Hamburger menu on the application
+     *
+     * @param locator
+     */
+    public void clickOnHamburger(String locator) {
+        WebElement element = FindElements.findByCss(driver, locator);
         element.click();
     }
-    public static void selectCategory(String locator){
 
+    /**
+     * Selects the Category link from the Hamburger menu
+     *
+     * @param locator
+     * @param category
+     */
+    public void selectOnCategoryMenuLink(String locator, String category) {
+        WebElement element = FindElements.findElementByXpath(driver, String.format(locator, category));
+        CommonMethods.clickElement(driver, element);
+        try {
+            element.click();
+        } catch (Exception e) {
+        }
     }
 
 
