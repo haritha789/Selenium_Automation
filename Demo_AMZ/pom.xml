@@ -125,7 +125,11 @@
             <artifactId>extentreports-cucumber4-adapter</artifactId>
             <version>1.0.10</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.0.3</version>
+        </dependency>
 
 
         <dependency>
