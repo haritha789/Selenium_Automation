@@ -16,7 +16,7 @@ public class PropertiesReader {
         try {
             properties = new Properties();
             try {
-                InputStream configFile = new FileInputStream("configs/Configuration.properties");
+                InputStream configFile = new FileInputStream("src/main/resources/configs/Configuration.properties");
                 InputStream data = new FileInputStream("src/main/resources/elements.properties");
                 properties.load(data);
                 properties.load(configFile);

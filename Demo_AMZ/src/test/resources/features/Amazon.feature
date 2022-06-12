@@ -1,12 +1,12 @@
 @amazon
 Feature: Amazon
-  Description: Validation of the key flows on the Amazon
+  Description: Validation of the Home,PLP & PDP flows on Amazon
 
   Background:
     Given  Launch the browser and the web url
 
   @TC1
-  Scenario: Verify the Homepage component API with a PageId, appId and Fields
+  Scenario: Verify Product description in PDP page for the Samsung second Highest priced TV
     Given User Open the Url and navigated to Home page
     When Navigate to Hamburger menu and Choose category as "shop by department" and subcategory as "TV, Appliances, Electronics"
     And  Click on "Televisions" under "tv, audio & cameras" subsection
