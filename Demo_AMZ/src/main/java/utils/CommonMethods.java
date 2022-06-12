@@ -32,8 +32,14 @@ public class CommonMethods {
      */
     public static void switchToSecondWindowTab(WebDriver driver) {
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        long uiWaitStart = System.currentTimeMillis();
+        long uiEndWait = uiWaitStart + 1000;
         for (String winHandle : driver.getWindowHandles()) {
             driver.switchTo().window(winHandle);
+            uiWaitStart = System.currentTimeMillis();
+            if(uiWaitStart>uiEndWait){
+                break;
+            }
         }
     }
 }
