@@ -81,3 +81,9 @@ Test scripts can be executed by providing below maven command
  mvn clean test -Dbrowser=safari -Dcucumber.options="--tags @TC1"
 ```
 ## Reports
+<img width="1680" alt="Screen Shot 2022-06-12 at 3 58 13 PM" src="https://user-images.githubusercontent.com/65031841/173232493-ab608fb5-3c1d-49f1-892e-da11ad78f25a.png">
+<img width="1680" alt="Screen Shot 2022-06-12 at 4 13 10 PM" src="https://user-images.githubusercontent.com/65031841/173232580-8afdc006-2ed5-4ffb-9c08-7a131c10fe37.png">
+<img width="1680" alt="Screen Shot 2022-06-12 at 4 12 52 PM" src="https://user-images.githubusercontent.com/65031841/173232585-f0dad81f-e7eb-460a-8b93-53b3bf84a7ef.png">
+
+
+
